@@ -1,4 +1,4 @@
-package com.example.userservice.infrastructure.persistance.entity;
+package com.example.userservice.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
 
