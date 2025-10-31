@@ -38,4 +38,14 @@ public class UserRepositoryImpl implements UserRepository {
                 .map(mapper::toModel)
                 .toList();
     }
+
+    @Override
+    public boolean existByEmail(String email) {
+        return userDriverRepo.existsByEmail(email);
+    }
+
+    @Override
+    public boolean existByUsername(String username) {
+        return userDriverRepo.existsByUsername(username);
+    }
 }
