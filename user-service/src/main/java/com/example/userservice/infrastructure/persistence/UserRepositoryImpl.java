@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -26,10 +27,9 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User findById(UUID id) {
+    public Optional<User> findById(UUID id) {
         return userDriverRepo.findById(id)
-                .map(mapper::toModel)
-                .orElse(null);
+                .map(mapper::toModel);
     }
 
     @Override

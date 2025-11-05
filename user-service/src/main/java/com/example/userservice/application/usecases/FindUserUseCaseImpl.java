@@ -19,11 +19,7 @@ public class FindUserUseCaseImpl implements FindUserUseCase {
 
     @Override
     public User findById(UUID id) throws UserNotFoundException {
-        var user = userRepository.findById(id);
-        if(user == null){
-            throw new UserNotFoundException("User with id: " + id + " was not found");
-        }
-        return user;
+        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     }
 
     @Override
