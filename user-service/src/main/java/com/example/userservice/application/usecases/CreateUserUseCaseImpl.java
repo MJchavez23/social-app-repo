@@ -22,10 +22,10 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
 
     private void checkUnique(String email, String username) throws EmailAlreadyExistException, UsernameAlreadyExistException {
         if(userRepository.existByEmail(email)){
-            throw new EmailAlreadyExistException("Email: " + email + " already exists");
+            throw new EmailAlreadyExistException(email);
         }
         if(userRepository.existByUsername(username)){
-            throw new UsernameAlreadyExistException("Username" + username + " already exist");
+            throw new UsernameAlreadyExistException(username);
         }
     }
 

@@ -27,8 +27,10 @@ public class FollowUserUseCaseImpl implements FollowUserUseCase {
         selfFollowCheck(currentUserId, userToFollowId);
 
         //Create the relation and save it
-        User follower = userRepository.findById(currentUserId).orElseThrow(() -> new UserNotFoundException(currentUserId));
-        User followed = userRepository.findById(userToFollowId).orElseThrow(() -> new UserNotFoundException(userToFollowId));
+        User follower = userRepository.findById(currentUserId)
+                .orElseThrow(() -> new UserNotFoundException(currentUserId));
+        User followed = userRepository.findById(userToFollowId)
+                .orElseThrow(() -> new UserNotFoundException(userToFollowId));
 
         UserFollow userFollow = new UserFollow(followed, follower);
 
