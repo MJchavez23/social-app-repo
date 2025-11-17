@@ -1,6 +1,7 @@
 package com.example.userservice.web.handler;
 
 import com.example.userservice.domain.model.exceptions.EmailAlreadyExistException;
+import com.example.userservice.domain.model.exceptions.UserNotFoundException;
 import com.example.userservice.domain.model.exceptions.UsernameAlreadyExistException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +35,11 @@ public class WebControllerHandler {
             errors.add(message);
         });
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<String> handleUserNotFoundException(UserNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
 }
